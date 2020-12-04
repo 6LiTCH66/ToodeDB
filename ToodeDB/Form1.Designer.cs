@@ -1,6 +1,6 @@
 ﻿namespace ToodeDB
 {
-    partial class Form1
+    partial class Pood
     {
         /// <summary>
         /// Required designer variable.
@@ -39,35 +39,36 @@
             this.btn_update = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toodenimetusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kogusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hindDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tootetableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.database1DataSet = new ToodeDB.Database1DataSet();
             this.tootetableTableAdapter = new ToodeDB.Database1DataSetTableAdapters.TootetableTableAdapter();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btn_LisaPilt = new System.Windows.Forms.Button();
+            this.LisaPilttxt = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tootetableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Toodetxt
             // 
-            this.Toodetxt.Location = new System.Drawing.Point(144, 50);
+            this.Toodetxt.Location = new System.Drawing.Point(70, 50);
             this.Toodetxt.Name = "Toodetxt";
             this.Toodetxt.Size = new System.Drawing.Size(100, 20);
             this.Toodetxt.TabIndex = 0;
             // 
             // Kogustxt
             // 
-            this.Kogustxt.Location = new System.Drawing.Point(144, 103);
+            this.Kogustxt.Location = new System.Drawing.Point(70, 103);
             this.Kogustxt.Name = "Kogustxt";
             this.Kogustxt.Size = new System.Drawing.Size(100, 20);
             this.Kogustxt.TabIndex = 1;
             // 
             // Hindtxt
             // 
-            this.Hindtxt.Location = new System.Drawing.Point(144, 162);
+            this.Hindtxt.Location = new System.Drawing.Point(70, 162);
             this.Hindtxt.Name = "Hindtxt";
             this.Hindtxt.Size = new System.Drawing.Size(100, 20);
             this.Hindtxt.TabIndex = 2;
@@ -75,7 +76,7 @@
             // Toode
             // 
             this.Toode.AutoSize = true;
-            this.Toode.Location = new System.Drawing.Point(67, 53);
+            this.Toode.Location = new System.Drawing.Point(12, 50);
             this.Toode.Name = "Toode";
             this.Toode.Size = new System.Drawing.Size(38, 13);
             this.Toode.TabIndex = 3;
@@ -84,7 +85,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(67, 106);
+            this.label2.Location = new System.Drawing.Point(12, 106);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 4;
@@ -93,7 +94,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(67, 165);
+            this.label3.Location = new System.Drawing.Point(12, 169);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 5;
@@ -101,7 +102,7 @@
             // 
             // btn_insert
             // 
-            this.btn_insert.Location = new System.Drawing.Point(70, 213);
+            this.btn_insert.Location = new System.Drawing.Point(12, 247);
             this.btn_insert.Name = "btn_insert";
             this.btn_insert.Size = new System.Drawing.Size(96, 30);
             this.btn_insert.TabIndex = 6;
@@ -111,7 +112,7 @@
             // 
             // btn_update
             // 
-            this.btn_update.Location = new System.Drawing.Point(70, 260);
+            this.btn_update.Location = new System.Drawing.Point(12, 297);
             this.btn_update.Name = "btn_update";
             this.btn_update.Size = new System.Drawing.Size(96, 30);
             this.btn_update.TabIndex = 7;
@@ -121,53 +122,22 @@
             // 
             // btn_delete
             // 
-            this.btn_delete.Location = new System.Drawing.Point(70, 311);
+            this.btn_delete.Location = new System.Drawing.Point(12, 352);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(96, 30);
             this.btn_delete.TabIndex = 8;
             this.btn_delete.Text = "Kustuta";
             this.btn_delete.UseVisualStyleBackColor = true;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.toodenimetusDataGridViewTextBoxColumn,
-            this.kogusDataGridViewTextBoxColumn,
-            this.hindDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.tootetableBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(276, 56);
+            this.dataGridView1.Location = new System.Drawing.Point(186, 12);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(446, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(602, 170);
             this.dataGridView1.TabIndex = 9;
             this.dataGridView1.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_RowHeaderMouseClick);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // toodenimetusDataGridViewTextBoxColumn
-            // 
-            this.toodenimetusDataGridViewTextBoxColumn.DataPropertyName = "Toodenimetus";
-            this.toodenimetusDataGridViewTextBoxColumn.HeaderText = "Toodenimetus";
-            this.toodenimetusDataGridViewTextBoxColumn.Name = "toodenimetusDataGridViewTextBoxColumn";
-            // 
-            // kogusDataGridViewTextBoxColumn
-            // 
-            this.kogusDataGridViewTextBoxColumn.DataPropertyName = "Kogus";
-            this.kogusDataGridViewTextBoxColumn.HeaderText = "Kogus";
-            this.kogusDataGridViewTextBoxColumn.Name = "kogusDataGridViewTextBoxColumn";
-            // 
-            // hindDataGridViewTextBoxColumn
-            // 
-            this.hindDataGridViewTextBoxColumn.DataPropertyName = "Hind";
-            this.hindDataGridViewTextBoxColumn.HeaderText = "Hind";
-            this.hindDataGridViewTextBoxColumn.Name = "hindDataGridViewTextBoxColumn";
             // 
             // tootetableBindingSource
             // 
@@ -183,11 +153,51 @@
             // 
             this.tootetableTableAdapter.ClearBeforeFill = true;
             // 
-            // Form1
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.pictureBox1.Location = new System.Drawing.Point(566, 188);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(187, 167);
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btn_LisaPilt
+            // 
+            this.btn_LisaPilt.Location = new System.Drawing.Point(12, 408);
+            this.btn_LisaPilt.Name = "btn_LisaPilt";
+            this.btn_LisaPilt.Size = new System.Drawing.Size(96, 30);
+            this.btn_LisaPilt.TabIndex = 11;
+            this.btn_LisaPilt.Text = "Lisa Pilt";
+            this.btn_LisaPilt.UseVisualStyleBackColor = true;
+            this.btn_LisaPilt.Click += new System.EventHandler(this.btn_LisaPilt_Click);
+            // 
+            // LisaPilttxt
+            // 
+            this.LisaPilttxt.Location = new System.Drawing.Point(440, 211);
+            this.LisaPilttxt.Name = "LisaPilttxt";
+            this.LisaPilttxt.Size = new System.Drawing.Size(100, 20);
+            this.LisaPilttxt.TabIndex = 12;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(382, 214);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Lisa Pilt";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // Pood
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LisaPilttxt);
+            this.Controls.Add(this.btn_LisaPilt);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btn_delete);
             this.Controls.Add(this.btn_update);
@@ -198,11 +208,12 @@
             this.Controls.Add(this.Hindtxt);
             this.Controls.Add(this.Kogustxt);
             this.Controls.Add(this.Toodetxt);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Pood";
+            this.Text = "Pood";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tootetableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,10 +234,10 @@
         private Database1DataSet database1DataSet;
         private System.Windows.Forms.BindingSource tootetableBindingSource;
         private Database1DataSetTableAdapters.TootetableTableAdapter tootetableTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn toodenimetusDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn kogusDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hindDataGridViewTextBoxColumn;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btn_LisaPilt;
+        private System.Windows.Forms.TextBox LisaPilttxt;
+        private System.Windows.Forms.Label label1;
     }
 }
 
