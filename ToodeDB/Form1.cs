@@ -17,7 +17,7 @@ namespace ToodeDB
         SaveFileDialog save;
         SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\AppData\Database1.mdf;Integrated Security=True");
         SqlCommand command;
-        SqlDataAdapter adapter;
+        SqlDataAdapter adapter, adapter2;
         int Id = 0;
         public Pood()
         {
@@ -31,6 +31,18 @@ namespace ToodeDB
             adapter = new SqlDataAdapter("SELECT * FROM dbo.Tootetable", connection);
             adapter.Fill(table);
             dataGridView1.DataSource = table;
+            pictureBox1.Image = Image.FromFile("../../Images/maxima.jpg");
+
+
+            adapter2 = new SqlDataAdapter("SELECT Kategooria_nimetus FROM Kategooria", connection);
+            DataTable kat_table = new DataTable();
+            adapter2.Fill(kat_table);
+
+            foreach (DataRow row in kat_table.Rows)
+            {
+                comboBox1.Items.Add(row["Kategooria_nimetus"]);
+            }
+
             connection.Close();
 
         }
@@ -53,20 +65,30 @@ namespace ToodeDB
 
         private void btn_insert_Click(object sender, EventArgs e)
         {
-            if (Toodetxt.Text != "" && Kogustxt.Text != "" && Hindtxt.Text != "")
+            if (Toodetxt.Text != "" && Kogustxt.Text != "" && Hindtxt.Text != "" && comboBox1.SelectedItem != null)
             {
-                command = new SqlCommand("INSERT INTO Tootetable(Toodenimetus, Kogus, Hind, Pilt) VALUES (@toode, @kogus, @hind, @pilt)", connection);
+                try
+                {
+                    command = new SqlCommand("INSERT INTO Tootetable(Toodenimetus, Kogus, Hind, Pilt, Kategooria_Id) VALUES (@toode, @kogus, @hind, @pilt, @kat)", connection);
 
-                connection.Open();
-                command.Parameters.AddWithValue("@toode", Toodetxt.Text);
-                command.Parameters.AddWithValue("@kogus", Kogustxt.Text);
-                command.Parameters.AddWithValue("@hind", Hindtxt.Text);
-                command.Parameters.AddWithValue("@pilt", save.FileName + "_" + save.Filter);
-                command.ExecuteNonQuery();
-                connection.Close();
-                DisplayData();
-                ClearData();
-                MessageBox.Show("Andmed on lisatud");
+                    connection.Open();
+                    command.Parameters.AddWithValue("@toode", Toodetxt.Text);
+                    command.Parameters.AddWithValue("@kogus", Kogustxt.Text);
+                    command.Parameters.AddWithValue("@hind", Hindtxt.Text);
+                    string file_pilt = Toodetxt.Text + ".jpg";
+                    command.Parameters.AddWithValue("@pilt", file_pilt);
+                    command.Parameters.AddWithValue("@kat", (comboBox1.SelectedIndex + 1));
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                    DisplayData();
+                    ClearData();
+                    MessageBox.Show("Andmed on lisatud");
+                }
+                catch (Exception)
+                {
+
+                }
+                
 
             }
             else
@@ -106,7 +128,8 @@ namespace ToodeDB
             Kogustxt.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
             Hindtxt.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
             pictureBox1.Image = Image.FromFile(@"C:\Users\opilane\source\repos\ToodeDB\ToodeDB\Images\" + dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString());
-            
+            string v = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+            comboBox1.SelectedIndex = Int32.Parse(v) - 1;
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
@@ -133,18 +156,19 @@ namespace ToodeDB
         {
             OpenFileDialog open = new OpenFileDialog();
             open.Filter = "Image Files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+            open.InitialDirectory = Path.GetDirectoryName(@"Desktop");
             if (open.ShowDialog() == DialogResult.OK)
             {
 
                 save = new SaveFileDialog();
-                save.FileName = Toodetxt.Text + "_" + Id;
-
+                save.FileName = Toodetxt.Text + ".jpg";
                 save.Filter = "Image Files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
-
+                save.InitialDirectory = Path.GetDirectoryName(@"C:\Users\opilane\source\repos\ToodeDB\ToodeDB\Images\");
                 if (save.ShowDialog()==DialogResult.OK)
                 {
-                    save.InitialDirectory = Path.GetFullPath(@"C:\Users\opilane\source\repos\ToodeDB\ToodeDB\Images\");
-                    save.ShowDialog();
+                    File.Copy(open.FileName, save.FileName);
+                    save.RestoreDirectory = true;
+                    pictureBox1.Image = Image.FromFile(save.FileName);
                 }
                 
 
